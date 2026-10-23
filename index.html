@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WeBuild — Your Profile</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 21h18" />
+            <path d="M5 21V7l7-4 7 4v14" />
+            <path d="M9 21v-6h6v6" />
+          </svg>
+        </span>
+        WeBuild
+      </a>
+      <nav class="nav" aria-label="Primary">
+        <a href="#profile" class="nav-link active">Profile</a>
+        <a href="#map" class="nav-link">Location</a>
+        <a href="#plans" class="nav-link">Plans</a>
+      </nav>
+      <button class="btn btn-outline header-cta" type="button" id="headerEdit">Edit Profile</button>
+    </div>
+  </header>
+
+  <main>
+    <!-- PROFILE SECTION -->
+    <section class="section profile-section" id="profile">
+      <div class="container">
+        <div class="profile-card">
+          <div class="profile-cover">
+            <span class="cover-badge">Verified member</span>
+          </div>
+
+          <div class="profile-body">
+            <div class="profile-top">
+              <div class="avatar-wrap">
+                <div class="avatar" id="avatar" aria-hidden="true">AR</div>
+                <span class="online-dot" title="Online"></span>
+              </div>
+              <div class="profile-identity">
+                <h1 id="displayName">Aarav Rao</h1>
+                <p class="role" id="displayRole">Product Designer &amp; Founder</p>
+                <p class="location-line">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0Z" />
+                    <circle cx="12" cy="10" r="3" />
+                  </svg>
+                  <span id="displayLocation">Bengaluru, India</span>
+                </p>
+              </div>
+              <button class="btn btn-primary" type="button" id="editProfileBtn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
+                  <path d="M18.5 2.5a2.12 2.12 0 0 1 3 3L12 15l-4 1 1-4Z" />
+                </svg>
+                Edit Profile
+              </button>
+            </div>
+
+            <p class="bio" id="displayBio">
+              Building clean, human-centred digital products. Currently exploring tools that help
+              early-stage founders ship faster.
+            </p>
+
+            <div class="stats">
+              <div class="stat">
+                <span class="stat-value">12</span>
+                <span class="stat-label">Projects</span>
+              </div>
+              <div class="stat">
+                <span class="stat-value">4.9</span>
+                <span class="stat-label">Rating</span>
+              </div>
+              <div class="stat">
+                <span class="stat-value">3+</span>
+                <span class="stat-label">Years</span>
+              </div>
+            </div>
+
+            <div class="info-grid">
+              <div class="info-item">
+                <span class="info-label">Email</span>
+                <span class="info-value" id="displayEmail">aarav@webuild.io</span>
+              </div>
+              <div class="info-item">
+                <span class="info-label">Phone</span>
+                <span class="info-value" id="displayPhone">+91 98765 43210</span>
+              </div>
+              <div class="info-item">
+                <span class="info-label">Website</span>
+                <span class="info-value" id="displayWebsite">aarav.design</span>
+              </div>
+              <div class="info-item">
+                <span class="info-label">Member since</span>
+                <span class="info-value" id="displayJoined">Jan 2023</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MAP SECTION -->
+    <section class="section map-section" id="map">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow">Location</span>
+            <h2>Where I'm based</h2>
+          </div>
+          <span class="map-pill" id="mapPill">Bengaluru, India</span>
+        </div>
+
+        <div class="map-frame">
+          <div class="map-canvas" role="img" aria-label="Stylised map of Bengaluru showing the profile location">
+            <svg class="map-art" viewBox="0 0 900 420" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+              <defs>
+                <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+                  <path d="M40 0H0V40" fill="none" stroke="#d7e8df" stroke-width="1" />
+                </pattern>
+              </defs>
+              <rect width="900" height="420" fill="#eef7f1" />
+              <rect width="900" height="420" fill="url(#grid)" />
+              <path d="M-20 300C120 260 220 330 340 280S560 180 700 220s160 40 220 10" fill="none" stroke="#9fd0b6" stroke-width="26" stroke-linecap="round" opacity=".55" />
+              <path d="M-20 300C120 260 220 330 340 280S560 180 700 220s160 40 220 10" fill="none" stroke="#cde9da" stroke-width="6" stroke-linecap="round" />
+              <path d="M120 -20C180 90 90 170 170 260s160 90 190 190" fill="none" stroke="#ffffff" stroke-width="18" stroke-linecap="round" />
+              <path d="M560 -20c40 120 180 120 220 230s-60 150 10 230" fill="none" stroke="#ffffff" stroke-width="14" stroke-linecap="round" />
+              <path d="M-20 110h420c60 0 80 50 140 50h380" fill="none" stroke="#ffffff" stroke-width="10" stroke-linecap="round" opacity=".9" />
+              <path d="M-20 380h240c80 0 120-40 200-40h500" fill="none" stroke="#ffffff" stroke-width="10" stroke-linecap="round" opacity=".9" />
+              <g fill="#dcefe4">
+                <rect x="600" y="60" width="90" height="60" rx="10" />
+                <rect x="710" y="90" width="120" height="80" rx="10" />
+                <rect x="360" y="60" width="110" height="50" rx="10" />
+                <rect x="60" y="160" width="90" height="70" rx="10" />
+                <rect x="700" y="300" width="130" height="70" rx="10" />
+                <rect x="300" y="330" width="110" height="55" rx="10" />
+              </g>
+              <g fill="#c6e3d3">
+                <circle cx="190" cy="90" r="26" />
+                <circle cx="230" cy="110" r="16" />
+                <circle cx="640" cy="250" r="22" />
+                <circle cx="675" cy="268" r="14" />
+              </g>
+            </svg>
+
+            <div class="map-pin" aria-hidden="true">
+              <span class="pin-pulse"></span>
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5Z" />
+              </svg>
+            </div>
+
+            <div class="map-card">
+              <div class="map-card-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0Z" />
+                  <circle cx="12" cy="10" r="3" />
+                </svg>
+              </div>
+              <div>
+                <strong>WeBuild Studio</strong>
+                <p>Indiranagar, Bengaluru — open to remote work</p>
+              </div>
+            </div>
+
+            <div class="map-controls" aria-hidden="true">
+              <button type="button" tabindex="-1">+</button>
+              <button type="button" tabindex="-1">−</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ASK / PLANS SECTION -->
+    <section class="section plans-section" id="plans">
+      <div class="container">
+        <div class="section-heading center">
+          <div>
+            <span class="eyebrow">Ask &amp; Plans</span>
+            <h2>Pick a plan that fits</h2>
+            <p class="section-sub">Simple pricing. Upgrade, downgrade, or cancel any time.</p>
+          </div>
+          <div class="billing-toggle" role="group" aria-label="Billing period">
+            <button type="button" class="billing-option active" data-period="monthly">Monthly</button>
+            <button type="button" class="billing-option" data-period="yearly">
+              Yearly <span class="save-tag">Save 20%</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="plans-grid">
+          <article class="plan-card">
+            <h3>Starter</h3>
+            <p class="plan-desc">For getting your first project online.</p>
+            <div class="plan-price">
+              <span class="currency">$</span>
+              <span class="price" data-monthly="0" data-yearly="0">0</span>
+              <span class="period">/mo</span>
+            </div>
+            <ul class="plan-features">
+              <li>1 active project</li>
+              <li>Basic profile page</li>
+              <li>Community support</li>
+              <li>5 GB storage</li>
+            </ul>
+            <button class="btn btn-outline full" type="button">Get started</button>
+          </article>
+
+          <article class="plan-card featured">
+            <span class="plan-ribbon">Most popular</span>
+            <h3>Growth</h3>
+            <p class="plan-desc">For founders shipping and iterating fast.</p>
+            <div class="plan-price">
+              <span class="currency">$</span>
+              <span class="price" data-monthly="19" data-yearly="15">19</span>
+              <span class="period">/mo</span>
+            </div>
+            <ul class="plan-features">
+              <li>10 active projects</li>
+              <li>Custom domain &amp; analytics</li>
+              <li>Priority email support</li>
+              <li>50 GB storage</li>
+            </ul>
+            <button class="btn btn-light full" type="button">Choose Growth</button>
+          </article>
+
+          <article class="plan-card">
+            <h3>Pro</h3>
+            <p class="plan-desc">For teams that need room to scale.</p>
+            <div class="plan-price">
+              <span class="currency">$</span>
+              <span class="price" data-monthly="49" data-yearly="39">49</span>
+              <span class="period">/mo</span>
+            </div>
+            <ul class="plan-features">
+              <li>Unlimited projects</li>
+              <li>Team roles &amp; permissions</li>
+              <li>Dedicated success manager</li>
+              <li>500 GB storage</li>
+            </ul>
+            <button class="btn btn-outline full" type="button">Choose Pro</button>
+          </article>
+        </div>
+
+        <div class="ask-strip">
+          <div class="ask-copy">
+            <h3>Still have questions?</h3>
+            <p>Tell us what you're building and we'll recommend the right plan.</p>
+          </div>
+          <form class="ask-form" id="askForm">
+            <label class="sr-only" for="askEmail">Email address</label>
+            <input id="askEmail" type="email" placeholder="you@company.com" required />
+            <button class="btn btn-primary" type="submit">Ask us</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>© 2026 WeBuild. All rights reserved.</span>
+      <div class="footer-links">
+        <a href="#profile">Profile</a>
+        <a href="#map">Location</a>
+        <a href="#plans">Plans</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- EDIT PROFILE MODAL -->
+  <div class="modal" id="editModal" aria-hidden="true">
+    <div class="modal-backdrop" data-close></div>
+    <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="modal-head">
+        <h2 id="modalTitle">Edit profile</h2>
+        <button class="icon-btn" type="button" data-close aria-label="Close">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <path d="M18 6 6 18M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+      <form class="modal-form" id="editForm">
+        <div class="field">
+          <label for="inputName">Full name</label>
+          <input id="inputName" name="name" type="text" required />
+        </div>
+        <div class="field">
+          <label for="inputRole">Role</label>
+          <input id="inputRole" name="role" type="text" />
+        </div>
+        <div class="field">
+          <label for="inputLocation">Location</label>
+          <input id="inputLocation" name="location" type="text" />
+        </div>
+        <div class="field">
+          <label for="inputEmail">Email</label>
+          <input id="inputEmail" name="email" type="email" required />
+        </div>
+        <div class="field">
+          <label for="inputPhone">Phone</label>
+          <input id="inputPhone" name="phone" type="tel" />
+        </div>
+        <div class="field">
+          <label for="inputWebsite">Website</label>
+          <input id="inputWebsite" name="website" type="text" />
+        </div>
+        <div class="field full-width">
+          <label for="inputBio">Bio</label>
+          <textarea id="inputBio" name="bio" rows="3"></textarea>
+        </div>
+        <div class="modal-actions">
+          <button class="btn btn-outline" type="button" data-close>Cancel</button>
+          <button class="btn btn-primary" type="submit">Save changes</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
