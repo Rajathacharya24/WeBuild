@@ -1,24 +1,4 @@
-export type PlanTripInput = {
-  destination: string;
-  days: number;
-  budget: "low" | "mid" | "high";
-  interests: string[];
-  startDate?: string;
-};
-
-export type DayPlan = {
-  day: number;
-  theme: string;
-  highlights: string[];
-};
-
-export type PlanTripOutput = {
-  summary: string;
-  dailyPlan: DayPlan[];
-  estimatedBudgetNote: string;
-  tips: string[];
-  source: "ai" | "fallback";
-};
+import type { PlanTripInput, PlanTripOutput } from "@webuild/shared";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:4000";
 
