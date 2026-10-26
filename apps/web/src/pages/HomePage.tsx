@@ -127,7 +127,7 @@ export function HomePage() {
     void runSearch(mode);
   }
 
-  function useExampleSearch(example: string) {
+  function applyExampleSearch(example: string) {
     setTerm(example);
     void runSearch("ai", example);
   }
@@ -242,7 +242,7 @@ export function HomePage() {
               >
                 <button
                   type="button"
-                  onClick={() => void runSearch("ai")}
+                  onClick={() => setMode("ai")}
                   aria-pressed={mode === "ai"}
                   className={cn(
                     "flex flex-1 items-center justify-center gap-1.5 rounded-full px-4 py-2.5 text-sm font-semibold transition-colors sm:flex-none",
@@ -256,7 +256,7 @@ export function HomePage() {
                 </button>
                 <button
                   type="button"
-                  onClick={() => void runSearch("search")}
+                  onClick={() => setMode("search")}
                   aria-pressed={mode === "search"}
                   className={cn(
                     "flex flex-1 items-center justify-center gap-1.5 rounded-full px-4 py-2.5 text-sm font-semibold transition-colors sm:flex-none",
@@ -289,7 +289,7 @@ export function HomePage() {
               <button
                 key={example}
                 type="button"
-                onClick={() => useExampleSearch(example)}
+                onClick={() => applyExampleSearch(example)}
                 className="rounded-full border border-primary/15 bg-primary-tint/60 px-3 py-1.5 text-left text-[11px] font-medium text-primary-dark transition-colors hover:border-primary/40 hover:bg-primary-tint"
               >
                 {example}
