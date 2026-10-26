@@ -1,0 +1,133 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String         @id @default(cuid())
+  email        String         @unique
+  name         String
+  passwordHash String
+  avatarUrl    String?
+  createdAt    DateTime       @default(now())
+  ratings      Rating[]
+  savedPlans   SavedPlan[]
+  savedPlaces  SavedPlace[]
+  activity     ActivityEvent[]
+}
+
+model Place {
+  id          String          @id @default(cuid())
+  slug        String          @unique
+  name        String
+  category    String
+  area        String
+  address     String
+  description String
+  latitude    Float
+  longitude   Float
+  imageUrl    String
+  priceLevel  Int             @default(2)
+  createdAt   DateTime        @default(now())
+  photos      PlacePhoto[]
+  ratings     Rating[]
+  savedBy     SavedPlace[]
+  planStops   PlanStop[]
+  activity    ActivityEvent[]
+
+  @@index([category])
+  @@index([area])
+}
+
+model PlacePhoto {
+  id      String @id @default(cuid())
+  placeId String
+  url     String
+  alt     String
+  order   Int    @default(0)
+  place   Place  @relation(fields: [placeId], references: [id], onDelete: Cascade)
+
+  @@index([placeId])
+}
+
+model Rating {
+  id        String   @id @default(cuid())
+  userId    String
+  placeId   String
+  rating    Int
+  comment   String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  place     Place    @relation(fields: [placeId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, placeId])
+  @@index([placeId])
+}
+
+model WeekendPlan {
+  id            String      @id @default(cuid())
+  slug          String      @unique
+  title         String
+  description   String
+  durationHours Int
+  budgetMin     Int
+  budgetMax     Int
+  imageUrl      String
+  stops         PlanStop[]
+  savedBy       SavedPlan[]
+}
+
+model PlanStop {
+  id      String       @id @default(cuid())
+  planId  String
+  placeId String?
+  name    String
+  note    String?
+  order   Int          @default(0)
+  plan    WeekendPlan  @relation(fields: [planId], references: [id], onDelete: Cascade)
+  place   Place?       @relation(fields: [placeId], references: [id], onDelete: SetNull)
+
+  @@index([planId])
+}
+
+model SavedPlan {
+  id        String      @id @default(cuid())
+  userId    String
+  planId    String
+  createdAt DateTime    @default(now())
+  user      User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  plan      WeekendPlan @relation(fields: [planId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, planId])
+  @@index([planId])
+}
+
+model SavedPlace {
+  id        String   @id @default(cuid())
+  userId    String
+  placeId   String
+  createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  place     Place    @relation(fields: [placeId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, placeId])
+  @@index([placeId])
+}
+
+model ActivityEvent {
+  id        String   @id @default(cuid())
+  type      String
+  placeId   String
+  userId    String?
+  createdAt DateTime @default(now())
+  place     Place    @relation(fields: [placeId], references: [id], onDelete: Cascade)
+  user      User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  @@index([placeId, createdAt])
+  @@index([type, createdAt])
+}
