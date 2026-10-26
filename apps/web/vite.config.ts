@@ -1,13 +1,26 @@
 import { fileURLToPath, URL } from "node:url";
 import react from "@vitejs/plugin-react";
-import { defineConfig } from "vite";
+import { defineConfig, type Plugin } from "vite";
 import { VitePWA } from "vite-plugin-pwa";
 import { APP_CONFIG } from "./app.config";
+
+function appConfigHtml(): Plugin {
+  return {
+    name: "webuild-app-config-html",
+    transformIndexHtml(html) {
+      return html
+        .replaceAll("%APP_TITLE%", `${APP_CONFIG.name} — ${APP_CONFIG.tagline}`)
+        .replaceAll("%APP_DESCRIPTION%", APP_CONFIG.description)
+        .replaceAll("%APP_THEME_COLOR%", APP_CONFIG.themeColor);
+    }
+  };
+}
 
 export default defineConfig({
   envDir: "../../",
   plugins: [
     react(),
+    appConfigHtml(),
     VitePWA({
       registerType: "autoUpdate",
       includeAssets: ["icon.svg", "apple-touch-icon.png"],
