@@ -1,0 +1,168 @@
+[
+  {
+    "slug": "nandi-hills-sunrise-breakfast",
+    "title": "Nandi Hills sunrise + breakfast",
+    "description": "Leave before dawn, catch the sunrise above the clouds and be back in the city for a slow South Indian breakfast.",
+    "durationHours": 8,
+    "budgetMin": 900,
+    "budgetMax": 1500,
+    "imageUrl": "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1200&q=80",
+    "stops": [
+      {
+        "placeSlug": "nandi-hills",
+        "name": "Nandi Hills",
+        "note": "Reach the gate by 5:30am for the sunrise and a short fort walk."
+      },
+      {
+        "placeSlug": "ctr-malleshwaram",
+        "name": "CTR, Malleshwaram",
+        "note": "Breakfast stop on the way back into the city."
+      }
+    ]
+  },
+  {
+    "slug": "cubbon-park-church-street-day",
+    "title": "Cubbon Park + Church Street day",
+    "description": "A full city day that mixes greenery, science, books, food and a relaxed evening on Church Street.",
+    "durationHours": 6,
+    "budgetMin": 800,
+    "budgetMax": 1500,
+    "imageUrl": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1200&q=80",
+    "stops": [
+      {
+        "placeSlug": "cubbon-park",
+        "name": "Cubbon Park",
+        "note": "Start early for a shaded loop walk."
+      },
+      {
+        "placeSlug": "visvesvaraya-industrial-museum",
+        "name": "Visvesvaraya Museum",
+        "note": "An easy, air-conditioned hour or two."
+      },
+      {
+        "placeSlug": "blossom-book-house",
+        "name": "Blossom Book House",
+        "note": "Browse the second-hand shelves."
+      },
+      {
+        "placeSlug": "empire-restaurant-church-street",
+        "name": "Empire Restaurant",
+        "note": "End with biryani or kebabs."
+      }
+    ]
+  },
+  {
+    "slug": "old-bangalore-heritage-walk",
+    "title": "Old Bangalore heritage walk",
+    "description": "A compact half-day loop through Basavanagudi and Chamrajpet covering temples, a palace and classic breakfast.",
+    "durationHours": 4,
+    "budgetMin": 400,
+    "budgetMax": 800,
+    "imageUrl": "https://images.unsplash.com/photo-1600100397608-f010a4a30b1e?auto=format&fit=crop&w=1200&q=80",
+    "stops": [
+      {
+        "placeSlug": "vidyarthi-bhavan",
+        "name": "Vidyarthi Bhavan",
+        "note": "Start with a benne masala dosa."
+      },
+      {
+        "placeSlug": "bull-temple",
+        "name": "Bull Temple",
+        "note": "Short temple visit and a walk through Gandhi Bazaar."
+      },
+      {
+        "placeSlug": "tipu-sultan-summer-palace",
+        "name": "Tipu Sultan's Summer Palace",
+        "note": "Teak pillars, frescoes and a quiet garden."
+      },
+      {
+        "placeSlug": "bangalore-fort",
+        "name": "Bangalore Fort",
+        "note": "Finish at the old fort walls near KR Market."
+      }
+    ]
+  },
+  {
+    "slug": "indiranagar-cafe-hop",
+    "title": "Indiranagar cafe hop",
+    "description": "Coffee, a quick idli stop, an afternoon of browsing and a long evening at one of the city's best brewpubs.",
+    "durationHours": 5,
+    "budgetMin": 1200,
+    "budgetMax": 2200,
+    "imageUrl": "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=1200&q=80",
+    "stops": [
+      {
+        "placeSlug": "third-wave-coffee-indiranagar",
+        "name": "Third Wave Coffee",
+        "note": "Coffee and a slow start."
+      },
+      {
+        "placeSlug": "rameshwaram-cafe-indiranagar",
+        "name": "Rameshwaram Cafe",
+        "note": "Ghee podi idli and filter coffee."
+      },
+      {
+        "placeSlug": "indiranagar-100-feet-road",
+        "name": "100 Feet Road",
+        "note": "Browse the boutiques and bookshops."
+      },
+      {
+        "placeSlug": "toit-brewpub",
+        "name": "Toit Brewpub",
+        "note": "Craft beer and pizza to close the day."
+      }
+    ]
+  },
+  {
+    "slug": "lakes-and-greens",
+    "title": "Lakes and greens",
+    "description": "A low-budget, low-stress day built around Bengaluru's best green spaces and a classic breakfast.",
+    "durationHours": 5,
+    "budgetMin": 500,
+    "budgetMax": 900,
+    "imageUrl": "https://images.unsplash.com/photo-1439066615861-d1af74d74000?auto=format&fit=crop&w=1200&q=80",
+    "stops": [
+      {
+        "placeSlug": "lalbagh-botanical-garden",
+        "name": "Lalbagh Botanical Garden",
+        "note": "Walk to the glasshouse and around the lake."
+      },
+      {
+        "placeSlug": "mtr-lalbagh",
+        "name": "MTR",
+        "note": "Rava idli and filter coffee."
+      },
+      {
+        "placeSlug": "ulsoor-lake",
+        "name": "Ulsoor Lake",
+        "note": "A slow loop by the water."
+      },
+      {
+        "placeSlug": "sankey-tank",
+        "name": "Sankey Tank",
+        "note": "Sunset benches in Malleshwaram."
+      }
+    ]
+  },
+  {
+    "slug": "family-fun-bannerghatta",
+    "title": "Family fun at Bannerghatta",
+    "description": "A full-day family plan with a wildlife safari, a butterfly park and an early dinner on the way home.",
+    "durationHours": 7,
+    "budgetMin": 1500,
+    "budgetMax": 2500,
+    "imageUrl": "https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&fit=crop&w=1200&q=80",
+    "stops": [
+      {
+        "placeSlug": "bannerghatta-national-park",
+        "name": "Bannerghatta National Park",
+        "note": "Book the safari slot online before you leave."
+      },
+      {
+        "placeSlug": "truffles-koramangala",
+        "name": "Truffles",
+        "note": "Easy burgers and shakes on the way back."
+      }
+    ]
+  }
+]
