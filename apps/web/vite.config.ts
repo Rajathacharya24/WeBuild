@@ -71,6 +71,22 @@ export default defineConfig({
       "@": fileURLToPath(new URL("./src", import.meta.url))
     }
   },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          if (
+            id.includes("node_modules/leaflet") ||
+            id.includes("node_modules/react-leaflet") ||
+            id.includes("node_modules/@react-leaflet")
+          ) {
+            return "maps";
+          }
+          return undefined;
+        }
+      }
+    }
+  },
   server: {
     port: 5173,
     host: true
