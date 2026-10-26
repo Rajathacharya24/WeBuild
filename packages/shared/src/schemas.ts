@@ -27,20 +27,44 @@ export const ratingSchema = z.object({
     .transform((value) => (value && value.length > 0 ? value : undefined))
 });
 
-export const placeQuerySchema = z.object({
-  lat: latitude.optional(),
-  lng: longitude.optional(),
-  q: z.string().trim().max(120).optional(),
-  category: z.string().trim().max(60).optional(),
-  limit: z.coerce.number().int().min(1).max(50).default(12)
-});
+const coordinatesRefinement = (data: { lat?: number; lng?: number }): boolean =>
+  (data.lat === undefined) === (data.lng === undefined);
 
-export const aiSearchSchema = z.object({
-  query: z.string().trim().min(2, "Describe what you are looking for").max(280),
-  lat: latitude.optional(),
-  lng: longitude.optional(),
-  limit: z.coerce.number().int().min(1).max(10).default(6)
-});
+export const placeQuerySchema = z
+  .object({
+    lat: latitude.optional(),
+    lng: longitude.optional(),
+    q: z.string().trim().max(120).optional(),
+    category: z.string().trim().max(60).optional(),
+    limit: z.coerce.number().int().min(1).max(50).default(12)
+  })
+  .refine(coordinatesRefinement, {
+    message: "lat and lng must be provided together",
+    path: ["lat"]
+  });
+
+export const aiSearchSchema = z
+  .object({
+    query: z.string().trim().min(2, "Describe what you are looking for").max(280),
+    lat: latitude.optional(),
+    lng: longitude.optional(),
+    limit: z.coerce.number().int().min(1).max(10).default(6)
+  })
+  .refine(coordinatesRefinement, {
+    message: "lat and lng must be provided together",
+    path: ["lat"]
+  });
+
+export const trendingQuerySchema = z
+  .object({
+    lat: latitude.optional(),
+    lng: longitude.optional(),
+    limit: z.coerce.number().int().min(1).max(20).default(8)
+  })
+  .refine(coordinatesRefinement, {
+    message: "lat and lng must be provided together",
+    path: ["lat"]
+  });
 
 export const placeIdSchema = z.object({
   id: z.string().trim().min(1).max(100)
@@ -51,3 +75,4 @@ export type LoginInput = z.infer<typeof loginSchema>;
 export type RatingInput = z.infer<typeof ratingSchema>;
 export type PlaceQueryInput = z.infer<typeof placeQuerySchema>;
 export type AiSearchInput = z.infer<typeof aiSearchSchema>;
+export type TrendingQueryInput = z.infer<typeof trendingQuerySchema>;
