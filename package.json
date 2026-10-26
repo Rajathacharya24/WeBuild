@@ -1,0 +1,31 @@
+{
+  "name": "webuild",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Discover, plan and rate the best of Bangalore.",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "dev": "npm run build -w @webuild/shared && concurrently -n api,web -c green,cyan \"npm:dev:api\" \"npm:dev:web\"",
+    "dev:api": "npm run dev -w @webuild/api",
+    "dev:web": "npm run dev -w @webuild/web",
+    "build": "npm run build -w @webuild/shared && npm run build -w @webuild/api && npm run build -w @webuild/web",
+    "typecheck": "npm run build -w @webuild/shared && npm run typecheck -w @webuild/shared && npm run typecheck -w @webuild/api && npm run typecheck -w @webuild/web",
+    "test": "npm run test -w @webuild/shared && npm run test -w @webuild/api",
+    "db:generate": "npm run prisma:generate -w @webuild/api",
+    "db:migrate": "npm run prisma:migrate -w @webuild/api",
+    "db:deploy": "npm run prisma:deploy -w @webuild/api",
+    "db:seed": "npm run prisma:seed -w @webuild/api",
+    "db:studio": "npm run prisma:studio -w @webuild/api",
+    "setup": "npm install && npm run db:generate && npm run db:deploy && npm run db:seed"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2",
+    "typescript": "^5.7.2"
+  }
+}
