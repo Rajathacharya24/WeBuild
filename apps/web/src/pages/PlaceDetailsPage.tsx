@@ -391,7 +391,7 @@ function RatePlaceForm({
   const [comment, setComment] = useState(place.myRating?.comment ?? "");
   const [pending, setPending] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [success, setSuccess] = useState(false);
+  const [success, setSuccess] = useState<string | null>(null);
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -402,7 +402,7 @@ function RatePlaceForm({
 
     setPending(true);
     setError(null);
-    setSuccess(false);
+    setSuccess(null);
 
     try {
       const updated = await api.ratePlace(place.id, {

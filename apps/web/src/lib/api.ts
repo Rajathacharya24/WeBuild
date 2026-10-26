@@ -30,7 +30,7 @@ interface RequestOptions {
   body?: unknown;
 }
 
-function buildQuery(params: Record<string, string | number | undefined | null>): string {
+function buildQuery(params: object): string {
   const search = new URLSearchParams();
   for (const [key, value] of Object.entries(params)) {
     if (value !== undefined && value !== null && value !== "") {
