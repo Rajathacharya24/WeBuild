@@ -29,13 +29,26 @@ packages/
 Requirements: Node.js 20+ and npm 10+.
 
 ```bash
-cp .env.example .env
-# Set a real JWT secret:
-#   node -e "console.log(require('crypto').randomBytes(48).toString('hex'))"
+# 1) Go to project
+cd /home/rajathacharya/OpenSource/WeBuild
 
-npm run setup   # installs dependencies, generates Prisma client, migrates + seeds
-npm run dev     # API on :4000, web on :5173
+# 2) Copy env and set JWT secret
+cp .env.example .env  # or use existing .env
+node -e "console.log(require('crypto').randomBytes(48).toString('hex'))"
+# Update JWT_SECRET in .env with the generated value
+
+# 3) Install deps + setup DB
+npm install
+npm run db:generate
+npm run db:deploy
+npm run db:seed
+
+# 4) Start app
+npm run dev
 ```
+
+API runs on http://localhost:4000, Web runs on http://localhost:5173  
+Demo: `demo@webuild.app` / `demo1234`
 
 `npm run setup` is a shortcut for:
 
