@@ -1,5 +1,5 @@
 import { Suspense, lazy, useEffect } from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 import { appConfig } from "@/config";
 import { AuthProvider } from "@/context/AuthContext";
 import { Navbar } from "@/components/layout/Navbar";
@@ -23,37 +23,45 @@ const NotFoundPage = lazy(() =>
   import("@/pages/NotFoundPage").then((module) => ({ default: module.NotFoundPage }))
 );
 
-export default function App() {
+function AppShell() {
+  const location = useLocation();
+
   useEffect(() => {
     document.title = `${appConfig.name} — ${appConfig.tagline}`;
   }, []);
 
   return (
+    <div className="flex min-h-screen flex-col">
+      <Navbar />
+      <div className="flex-1">
+        <Suspense
+          fallback={
+            <div className="shell py-16">
+              <Spinner label="Loading page…" />
+            </div>
+          }
+        >
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/places/:slug" element={<PlaceDetailsPage />} />
+            <Route path="/profile" element={<ProfilePage />} />
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/signup" element={<LoginPage />} />
+            <Route path="*" element={<NotFoundPage />} />
+          </Routes>
+        </Suspense>
+      </div>
+      {location.pathname !== "/" ? <Footer /> : null}
+    </div>
+  );
+}
+
+export default function App() {
+  return (
     <BrowserRouter>
       <AuthProvider>
         <ScrollToTop />
-        <div className="flex min-h-screen flex-col">
-          <Navbar />
-          <div className="flex-1">
-            <Suspense
-              fallback={
-                <div className="shell py-16">
-                  <Spinner label="Loading page…" />
-                </div>
-              }
-            >
-              <Routes>
-                <Route path="/" element={<HomePage />} />
-                <Route path="/places/:slug" element={<PlaceDetailsPage />} />
-                <Route path="/profile" element={<ProfilePage />} />
-                <Route path="/login" element={<LoginPage />} />
-                <Route path="/signup" element={<LoginPage />} />
-                <Route path="*" element={<NotFoundPage />} />
-              </Routes>
-            </Suspense>
-          </div>
-          <Footer />
-        </div>
+        <AppShell />
       </AuthProvider>
     </BrowserRouter>
   );
