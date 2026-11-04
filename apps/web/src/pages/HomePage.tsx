@@ -1,5 +1,5 @@
-import { useRef, useState, type FormEvent } from "react";
-import { Search, Sparkles } from "lucide-react";
+import { useMemo, useRef, useState, type FormEvent } from "react";
+import { Filter, MapPin, Search, Sparkles, Star } from "lucide-react";
 import type { SearchMode } from "@webuild/shared";
 import { useAsync } from "@/hooks/useAsync";
 import { useGeolocation } from "@/hooks/useGeolocation";
@@ -14,6 +14,9 @@ export function HomePage() {
   const [term, setTerm] = useState("");
   const [searching, setSearching] = useState(false);
   const [searchError, setSearchError] = useState<string | null>(null);
+  const [selectedFilter, setSelectedFilter] = useState<
+    "all" | "top-rated" | "coffee" | "parks" | "food"
+  >("all");
 
   const nearby = useAsync(
     () =>
@@ -67,6 +70,35 @@ export function HomePage() {
   }
 
   const nearbyPlaces = nearby.data ?? [];
+
+  const filteredPlaces = useMemo(() => {
+    const base = [...nearbyPlaces];
+
+    const filtered =
+      selectedFilter === "all"
+        ? base
+        : selectedFilter === "top-rated"
+          ? base.sort((a, b) => b.rating - a.rating)
+          : base.filter((place) => {
+              const category = place.category.toLowerCase();
+
+              if (selectedFilter === "coffee") {
+                return category.includes("cafe") || category.includes("coffee");
+              }
+
+              if (selectedFilter === "parks") {
+                return category.includes("park") || category.includes("nature");
+              }
+
+              if (selectedFilter === "food") {
+                return category.includes("restaurant") || category.includes("food");
+              }
+
+              return true;
+            });
+
+    return filtered.slice(0, 4);
+  }, [nearbyPlaces, selectedFilter]);
 
   return (
     <main id="main-content" className="min-h-screen pb-10">
@@ -147,6 +179,95 @@ export function HomePage() {
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section className="shell mt-5">
+        <div className="grid gap-4 lg:grid-cols-[1.7fr_0.9fr]">
+          <div className="card-surface p-4 sm:p-5">
+            <div className="flex items-center justify-between gap-3">
+              <div>
+                <p className="eyebrow">Nearby picks</p>
+                <h2 className="mt-1 text-xl font-bold text-ink">Nearest places</h2>
+              </div>
+              <span className="inline-flex items-center gap-1 rounded-full bg-primary-tint px-2.5 py-1 text-xs font-semibold text-primary-dark">
+                <Star className="h-3.5 w-3.5" aria-hidden="true" />
+                Top rated
+              </span>
+            </div>
+
+            <div className="mt-4 space-y-3">
+              {filteredPlaces.length > 0 ? (
+                filteredPlaces.map((place) => (
+                  <div
+                    key={place.id}
+                    className="flex items-center justify-between gap-3 rounded-2xl border border-slate-200 bg-slate-50/60 px-3 py-2.5"
+                  >
+                    <div className="flex min-w-0 items-center gap-3">
+                      <div className="grid h-11 w-11 place-items-center rounded-xl bg-primary-tint text-primary-dark">
+                        <MapPin className="h-4 w-4" aria-hidden="true" />
+                      </div>
+                      <div className="min-w-0">
+                        <p className="truncate text-sm font-semibold text-ink">{place.name}</p>
+                        <p className="truncate text-xs text-muted">
+                          {place.area} · {place.category}
+                        </p>
+                      </div>
+                    </div>
+                    <div className="flex shrink-0 items-center gap-1 text-xs font-semibold text-amber-500">
+                      <Star className="h-3.5 w-3.5 fill-current" aria-hidden="true" />
+                      {place.rating.toFixed(1)}
+                    </div>
+                  </div>
+                ))
+              ) : (
+                <p className="text-sm text-muted">No places match this filter right now.</p>
+              )}
+            </div>
+          </div>
+
+          <aside className="card-surface p-4 sm:p-5">
+            <div className="flex items-center gap-2">
+              <span className="grid h-8 w-8 place-items-center rounded-full bg-primary-tint text-primary-dark">
+                <Filter className="h-4 w-4" aria-hidden="true" />
+              </span>
+              <div>
+                <p className="eyebrow">Filter</p>
+                <h3 className="text-lg font-bold text-ink">Your interest</h3>
+              </div>
+            </div>
+
+            <div className="mt-4 flex flex-wrap gap-2">
+              {[
+                { id: "all", label: "All" },
+                { id: "top-rated", label: "Top rated" },
+                { id: "coffee", label: "Coffee" },
+                { id: "parks", label: "Parks" },
+                { id: "food", label: "Food" }
+              ].map((filter) => (
+                <button
+                  key={filter.id}
+                  type="button"
+                  onClick={() => setSelectedFilter(filter.id as typeof selectedFilter)}
+                  className={[
+                    "rounded-full border px-3 py-1.5 text-xs font-semibold transition-colors",
+                    selectedFilter === filter.id
+                      ? "border-primary bg-primary text-white"
+                      : "border-slate-200 bg-slate-50 text-slate-700 hover:border-primary/40 hover:text-primary-dark"
+                  ].join(" ")}
+                >
+                  {filter.label}
+                </button>
+              ))}
+            </div>
+
+            <div className="mt-5 rounded-2xl bg-primary-tint p-3 text-sm text-primary-dark">
+              <p className="font-semibold">Quick picks</p>
+              <p className="mt-1 text-xs leading-relaxed text-primary-dark/80">
+                Best nearby spots based on rating, distance and what you like most.
+              </p>
+            </div>
+          </aside>
         </div>
       </section>
     </main>
