@@ -14,9 +14,6 @@ export function HomePage() {
   const [term, setTerm] = useState("");
   const [searching, setSearching] = useState(false);
   const [searchError, setSearchError] = useState<string | null>(null);
-  const [selectedFilter, setSelectedFilter] = useState<
-    "all" | "top-rated" | "coffee" | "parks" | "food"
-  >("all");
   const [selectedPlaceId, setSelectedPlaceId] = useState<string | null>(null);
 
   const nearby = useAsync(
@@ -72,34 +69,7 @@ export function HomePage() {
 
   const nearbyPlaces = nearby.data ?? [];
 
-  const filteredPlaces = useMemo(() => {
-    const base = [...nearbyPlaces];
-
-    const filtered =
-      selectedFilter === "all"
-        ? base
-        : selectedFilter === "top-rated"
-          ? base.sort((a, b) => b.rating - a.rating)
-          : base.filter((place) => {
-              const category = place.category.toLowerCase();
-
-              if (selectedFilter === "coffee") {
-                return category.includes("cafe") || category.includes("coffee");
-              }
-
-              if (selectedFilter === "parks") {
-                return category.includes("park") || category.includes("nature");
-              }
-
-              if (selectedFilter === "food") {
-                return category.includes("restaurant") || category.includes("food");
-              }
-
-              return true;
-            });
-
-    return filtered.slice(0, 4);
-  }, [nearbyPlaces, selectedFilter]);
+  const filteredPlaces = useMemo(() => [...nearbyPlaces].slice(0, 4), [nearbyPlaces]);
 
   useEffect(() => {
     if (!filteredPlaces.length) {
