@@ -1,5 +1,5 @@
-import { useMemo, useRef, useState, type FormEvent } from "react";
-import { Filter, MapPin, Search, Sparkles, Star } from "lucide-react";
+import { useEffect, useMemo, useRef, useState, type FormEvent } from "react";
+import { ArrowRight, Filter, MapPin, Search, Sparkles, Star } from "lucide-react";
 import type { SearchMode } from "@webuild/shared";
 import { useAsync } from "@/hooks/useAsync";
 import { useGeolocation } from "@/hooks/useGeolocation";
@@ -17,6 +17,7 @@ export function HomePage() {
   const [selectedFilter, setSelectedFilter] = useState<
     "all" | "top-rated" | "coffee" | "parks" | "food"
   >("all");
+  const [selectedPlaceId, setSelectedPlaceId] = useState<string | null>(null);
 
   const nearby = useAsync(
     () =>
@@ -99,6 +100,48 @@ export function HomePage() {
 
     return filtered.slice(0, 4);
   }, [nearbyPlaces, selectedFilter]);
+
+  useEffect(() => {
+    if (!filteredPlaces.length) {
+      setSelectedPlaceId(null);
+      return;
+    }
+
+    if (!selectedPlaceId || !filteredPlaces.some((place) => place.id === selectedPlaceId)) {
+      setSelectedPlaceId(filteredPlaces[0].id);
+    }
+  }, [filteredPlaces, selectedPlaceId]);
+
+  const selectedPlace =
+    filteredPlaces.find((place) => place.id === selectedPlaceId) ?? filteredPlaces[0] ?? null;
+
+  const routeSteps = useMemo(() => {
+    if (!selectedPlace) {
+      return [];
+    }
+
+    const area = selectedPlace.area;
+    const distanceLabel = selectedPlace.distanceKm != null ? `${selectedPlace.distanceKm.toFixed(1)} km away` : "nearby";
+
+    return [
+      {
+        title: "Start from your location",
+        detail: `Head out from your current area and move toward the nearest transit stop.`
+      },
+      {
+        title: "Take the fastest local route",
+        detail: `The best option is to use a metro or rapid transit toward ${area}. This keeps travel time low and avoids traffic.`
+      },
+      {
+        title: "Travel to your selected stop",
+        detail: `Get off near ${selectedPlace.name} and continue for about 2 minutes on foot to reach the final spot.`
+      },
+      {
+        title: "Explore and enjoy",
+        detail: `${selectedPlace.name} is ${distanceLabel}. Would you like an option for another nearby place after this stop?`
+      }
+    ];
+  }, [selectedPlace]);
 
   return (
     <main id="main-content" className="min-h-screen pb-10">
@@ -202,9 +245,16 @@ export function HomePage() {
             <div className="relative mt-4 space-y-2.5 sm:mt-5 sm:space-y-3">
               {filteredPlaces.length > 0 ? (
                 filteredPlaces.map((place) => (
-                  <div
+                  <button
+                    type="button"
                     key={place.id}
-                    className="group flex items-center justify-between gap-2 rounded-2xl border border-slate-200/80 bg-white/90 px-2.5 py-2.5 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-primary/25 hover:shadow-card sm:gap-3 sm:px-3 sm:py-3"
+                    onClick={() => setSelectedPlaceId(place.id)}
+                    className={[
+                      "group flex w-full items-center justify-between gap-2 rounded-2xl border px-2.5 py-2.5 text-left shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-card sm:gap-3 sm:px-3 sm:py-3",
+                      selectedPlace?.id === place.id
+                        ? "border-primary/30 bg-primary-tint/70 shadow-card"
+                        : "border-slate-200/80 bg-white/90 hover:border-primary/25"
+                    ].join(" ")}
                   >
                     <div className="flex min-w-0 items-center gap-2.5 sm:gap-3">
                       <div className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-gradient-to-br from-primary-tint to-emerald-100 text-primary-dark ring-4 ring-primary/5 sm:h-12 sm:w-12">
@@ -225,7 +275,7 @@ export function HomePage() {
                       <Star className="h-3 w-3 fill-current" aria-hidden="true" />
                       {place.rating.toFixed(1)}
                     </div>
-                  </div>
+                  </button>
                 ))
               ) : (
                 <p className="rounded-2xl border border-dashed border-primary/15 bg-primary-tint/40 px-3 py-4 text-xs text-muted sm:text-sm">
@@ -241,41 +291,50 @@ export function HomePage() {
                 <Filter className="h-3.5 w-3.5 sm:h-4 sm:w-4" aria-hidden="true" />
               </span>
               <div>
-                <p className="eyebrow text-[10px] sm:text-xs">Filter</p>
-                <h3 className="text-base font-black text-ink sm:text-lg">Your interest</h3>
+                <p className="eyebrow text-[10px] sm:text-xs">Route</p>
+                <h3 className="text-base font-black text-ink sm:text-lg">How to reach</h3>
               </div>
             </div>
 
-            <div className="mt-4 flex flex-wrap gap-2">
-              {[
-                { id: "all", label: "All" },
-                { id: "top-rated", label: "Top rated" },
-                { id: "coffee", label: "Coffee" },
-                { id: "parks", label: "Parks" },
-                { id: "food", label: "Food" }
-              ].map((filter) => (
-                <button
-                  key={filter.id}
-                  type="button"
-                  onClick={() => setSelectedFilter(filter.id as typeof selectedFilter)}
-                  className={[
-                    "rounded-full border px-2.5 py-1.5 text-[10px] font-semibold transition-all duration-200 sm:text-xs",
-                    selectedFilter === filter.id
-                      ? "border-primary bg-primary text-white shadow-sm"
-                      : "border-slate-200 bg-slate-50 text-slate-700 hover:border-primary/30 hover:text-primary-dark"
-                  ].join(" ")}
-                >
-                  {filter.label}
-                </button>
-              ))}
-            </div>
+            {selectedPlace ? (
+              <>
+                <div className="mt-4 rounded-2xl border border-primary/10 bg-gradient-to-br from-primary-tint to-emerald-50 p-3">
+                  <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-primary-dark/70">Selected stop</p>
+                  <p className="mt-2 text-sm font-black text-ink sm:text-base">{selectedPlace.name}</p>
+                  <p className="mt-1 text-[10px] text-muted sm:text-xs">{selectedPlace.area} · {selectedPlace.category}</p>
+                </div>
 
-            <div className="mt-5 rounded-2xl border border-primary/10 bg-gradient-to-br from-primary-tint to-emerald-50 p-3">
-              <p className="text-xs font-bold text-primary-dark sm:text-sm">Quick picks</p>
-              <p className="mt-1 text-[10px] leading-relaxed text-primary-dark/80 sm:text-xs">
-                Best nearby spots based on rating, distance and what you like most.
-              </p>
-            </div>
+                <div className="mt-4 space-y-3">
+                  {routeSteps.map((step, index) => (
+                    <div key={step.title} className="flex gap-3 rounded-2xl border border-slate-200 bg-slate-50/60 p-2.5">
+                      <div className="grid h-6 w-6 shrink-0 place-items-center rounded-full bg-primary text-[10px] font-bold text-white">
+                        {index + 1}
+                      </div>
+                      <div className="min-w-0">
+                        <p className="text-[11px] font-bold text-ink sm:text-xs">{step.title}</p>
+                        <p className="mt-1 text-[10px] leading-relaxed text-muted sm:text-[11px]">{step.detail}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="mt-4 rounded-2xl border border-dashed border-primary/15 bg-white p-3">
+                  <div className="flex items-center justify-between gap-2">
+                    <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-primary-dark/80 sm:text-[11px]">
+                      Nearby vibe
+                    </p>
+                    <ArrowRight className="h-3.5 w-3.5 text-primary-dark" aria-hidden="true" />
+                  </div>
+                  <p className="mt-2 text-[10px] leading-relaxed text-muted sm:text-xs">
+                    Want to see another place nearby that matches your mood? We can suggest a nearby stop after this one.
+                  </p>
+                </div>
+              </>
+            ) : (
+              <div className="mt-4 rounded-2xl border border-dashed border-primary/15 bg-primary-tint/60 p-3 text-[10px] text-muted sm:text-xs">
+                Choose a nearby place to see the best route from your current location.
+              </div>
+            )}
           </aside>
         </div>
       </section>
