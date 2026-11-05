@@ -91,24 +91,27 @@ export function HomePage() {
     }
 
     const area = selectedPlace.area;
-    const distanceLabel = selectedPlace.distanceKm != null ? `${selectedPlace.distanceKm.toFixed(1)} km away` : "nearby";
 
     return [
       {
-        title: "Start from your location",
-        detail: `Head out from your current area and move toward the nearest transit stop.`
+        title: "From your location",
+        subtitle: "You are here",
+        detail: "Start from your current spot and head toward the nearest stop."
       },
       {
-        title: "Take the fastest local route",
-        detail: `The best option is to use a metro or rapid transit toward ${area}. This keeps travel time low and avoids traffic.`
+        title: "Metro / rapid transit",
+        subtitle: "Best route",
+        detail: `Take the fastest route toward ${area} to avoid traffic and save time.`
       },
       {
-        title: "Travel to your selected stop",
-        detail: `Get off near ${selectedPlace.name} and continue for about 2 minutes on foot to reach the final spot.`
+        title: "Short walk",
+        subtitle: "2 min walk",
+        detail: `Continue on foot to ${selectedPlace.name} and get closer to your destination.`
       },
       {
-        title: "Explore and enjoy",
-        detail: `${selectedPlace.name} is ${distanceLabel}. Would you like an option for another nearby place after this stop?`
+        title: "Arrive at destination",
+        subtitle: "You are there",
+        detail: `Enjoy your visit to ${selectedPlace.name}.`
       }
     ];
   }, [selectedPlace]);
@@ -256,53 +259,99 @@ export function HomePage() {
           </div>
 
           <aside className="rounded-[28px] border border-line bg-white p-3 shadow-card sm:p-4">
-            <div className="flex items-center gap-2">
-              <span className="grid h-8 w-8 place-items-center rounded-full bg-primary-tint text-primary-dark">
-                <Filter className="h-3.5 w-3.5 sm:h-4 sm:w-4" aria-hidden="true" />
-              </span>
-              <div>
-                <p className="eyebrow text-[10px] sm:text-xs">Route</p>
-                <h3 className="text-base font-black text-ink sm:text-lg">How to reach</h3>
+            <div className="flex items-center justify-between gap-2 border-b border-slate-100 pb-3">
+              <div className="flex items-center gap-2">
+                <span className="grid h-8 w-8 place-items-center rounded-full bg-primary-tint text-primary-dark">
+                  <Filter className="h-3.5 w-3.5 sm:h-4 sm:w-4" aria-hidden="true" />
+                </span>
+                <div>
+                  <p className="eyebrow text-[10px] sm:text-xs">Live route</p>
+                  <h3 className="text-base font-black text-ink sm:text-lg">Track your trip</h3>
+                </div>
+              </div>
+
+              <div className="rounded-full bg-emerald-50 px-2 py-1 text-[10px] font-bold text-emerald-700">
+                On the way
               </div>
             </div>
 
             {selectedPlace ? (
               <>
                 <div className="mt-4 rounded-2xl border border-primary/10 bg-gradient-to-br from-primary-tint to-emerald-50 p-3">
-                  <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-primary-dark/70">Selected stop</p>
-                  <p className="mt-2 text-sm font-black text-ink sm:text-base">{selectedPlace.name}</p>
+                  <div className="flex items-center justify-between gap-3">
+                    <div>
+                      <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-primary-dark/70">Destination</p>
+                      <p className="mt-2 text-sm font-black text-ink sm:text-base">{selectedPlace.name}</p>
+                    </div>
+                    <div className="text-right">
+                      <p className="text-[10px] text-muted">ETA</p>
+                      <p className="text-sm font-black text-primary-dark">12 min</p>
+                    </div>
+                  </div>
                   <p className="mt-1 text-[10px] text-muted sm:text-xs">{selectedPlace.area} · {selectedPlace.category}</p>
                 </div>
 
+                <div className="mt-4 rounded-2xl bg-slate-50 p-3">
+                  <div className="mb-3 flex items-center justify-between text-[10px] font-semibold text-muted sm:text-[11px]">
+                    <span>Route progress</span>
+                    <span>65%</span>
+                  </div>
+                  <div className="h-2 overflow-hidden rounded-full bg-slate-200">
+                    <div className="h-full w-[65%] rounded-full bg-gradient-to-r from-primary to-emerald-500" />
+                  </div>
+                </div>
+
                 <div className="mt-4 space-y-3">
-                  {routeSteps.map((step, index) => (
-                    <div key={step.title} className="flex gap-3 rounded-2xl border border-slate-200 bg-slate-50/60 p-2.5">
-                      <div className="grid h-6 w-6 shrink-0 place-items-center rounded-full bg-primary text-[10px] font-bold text-white">
-                        {index + 1}
+                  {routeSteps.map((step, index) => {
+                    const isActive = index === 1;
+                    const isComplete = index < 2;
+
+                    return (
+                      <div key={step.title} className="relative flex gap-3">
+                        {index < routeSteps.length - 1 ? (
+                          <div className="absolute left-[11px] top-6 h-[calc(100%-10px)] w-px bg-slate-200" />
+                        ) : null}
+
+                        <div className="relative z-10 flex h-6 w-6 shrink-0 items-center justify-center rounded-full border-2 border-white shadow-sm" style={{backgroundColor: isComplete ? "#16a34a" : isActive ? "#d1fae5" : "#e2e8f0", color: isComplete || isActive ? "white" : "#64748b"}}>
+                          {isComplete ? "✓" : index + 1}
+                        </div>
+
+                        <div className={[
+                          "min-w-0 flex-1 rounded-2xl border p-2.5",
+                          isActive
+                            ? "border-primary/30 bg-primary-tint/70"
+                            : isComplete
+                              ? "border-emerald-100 bg-emerald-50/60"
+                              : "border-slate-200 bg-slate-50/60"
+                        ].join(" ")}>
+                          <div className="flex items-center justify-between gap-2">
+                            <p className="text-[11px] font-bold text-ink sm:text-xs">{step.title}</p>
+                            <span className="text-[9px] font-semibold uppercase tracking-[0.12em] text-muted">
+                              {step.subtitle}
+                            </span>
+                          </div>
+                          <p className="mt-1 text-[10px] leading-relaxed text-muted sm:text-[11px]">{step.detail}</p>
+                        </div>
                       </div>
-                      <div className="min-w-0">
-                        <p className="text-[11px] font-bold text-ink sm:text-xs">{step.title}</p>
-                        <p className="mt-1 text-[10px] leading-relaxed text-muted sm:text-[11px]">{step.detail}</p>
-                      </div>
-                    </div>
-                  ))}
+                    );
+                  })}
                 </div>
 
                 <div className="mt-4 rounded-2xl border border-dashed border-primary/15 bg-white p-3">
                   <div className="flex items-center justify-between gap-2">
                     <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-primary-dark/80 sm:text-[11px]">
-                      Nearby vibe
+                      Next suggestion
                     </p>
                     <ArrowRight className="h-3.5 w-3.5 text-primary-dark" aria-hidden="true" />
                   </div>
                   <p className="mt-2 text-[10px] leading-relaxed text-muted sm:text-xs">
-                    Want to see another place nearby that matches your mood? We can suggest a nearby stop after this one.
+                    After this stop, explore a nearby cafe or park to keep the evening flowing smooth and easy.
                   </p>
                 </div>
               </>
             ) : (
               <div className="mt-4 rounded-2xl border border-dashed border-primary/15 bg-primary-tint/60 p-3 text-[10px] text-muted sm:text-xs">
-                Choose a nearby place to see the best route from your current location.
+                Choose a nearby place to see your live trip route.
               </div>
             )}
           </aside>
