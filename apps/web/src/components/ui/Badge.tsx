@@ -16,10 +16,12 @@ export function Badge({
     <span
       className={cn(
         "inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-[11px] font-semibold",
-        variant === "primary" && "bg-primary-tint text-primary-dark",
-        variant === "dark" && "bg-primary text-white",
-        variant === "outline" && "border border-primary/20 bg-white/90 text-primary-dark",
-        variant === "muted" && "bg-slate-100 text-slate-600",
+        variant === "primary" && "bg-primary-tint/90 text-primary-dark",
+        variant === "dark" &&
+          "bg-gradient-to-r from-primary to-[#ff6fb5] text-white shadow-sm",
+        variant === "outline" &&
+          "border border-primary/20 bg-white/85 text-primary-dark backdrop-blur",
+        variant === "muted" && "bg-[#f6f2ff] text-muted",
         className
       )}
     >
