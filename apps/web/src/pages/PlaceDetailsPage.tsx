@@ -107,19 +107,19 @@ export function PlaceDetailsPage() {
               </h2>
               <p className="mt-3 text-sm leading-7 text-muted">{place.description}</p>
               <dl className="mt-5 grid gap-3 sm:grid-cols-3">
-                <div className="rounded-2xl border border-white/70 bg-white/78 p-4 shadow-sm backdrop-blur">
+                <div className="rounded-2xl border border-white/70 bg-white/80 p-4 shadow-sm backdrop-blur">
                   <dt className="text-[11px] font-semibold uppercase tracking-[0.12em] text-primary-dark">
                     Category
                   </dt>
                   <dd className="mt-1 text-sm font-semibold text-ink">{place.category}</dd>
                 </div>
-                <div className="rounded-2xl border border-white/70 bg-white/78 p-4 shadow-sm backdrop-blur">
+                <div className="rounded-2xl border border-white/70 bg-white/80 p-4 shadow-sm backdrop-blur">
                   <dt className="text-[11px] font-semibold uppercase tracking-[0.12em] text-primary-dark">
                     Neighbourhood
                   </dt>
                   <dd className="mt-1 text-sm font-semibold text-ink">{place.area}</dd>
                 </div>
-                <div className="rounded-2xl border border-white/70 bg-white/78 p-4 shadow-sm backdrop-blur">
+                <div className="rounded-2xl border border-white/70 bg-white/80 p-4 shadow-sm backdrop-blur">
                   <dt className="text-[11px] font-semibold uppercase tracking-[0.12em] text-primary-dark">
                     Price
                   </dt>
