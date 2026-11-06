@@ -107,19 +107,19 @@ export function PlaceDetailsPage() {
               </h2>
               <p className="mt-3 text-sm leading-7 text-muted">{place.description}</p>
               <dl className="mt-5 grid gap-3 sm:grid-cols-3">
-                <div className="rounded-2xl bg-primary-tint/60 p-4">
+                <div className="rounded-2xl border border-white/70 bg-white/78 p-4 shadow-sm backdrop-blur">
                   <dt className="text-[11px] font-semibold uppercase tracking-[0.12em] text-primary-dark">
                     Category
                   </dt>
                   <dd className="mt-1 text-sm font-semibold text-ink">{place.category}</dd>
                 </div>
-                <div className="rounded-2xl bg-primary-tint/60 p-4">
+                <div className="rounded-2xl border border-white/70 bg-white/78 p-4 shadow-sm backdrop-blur">
                   <dt className="text-[11px] font-semibold uppercase tracking-[0.12em] text-primary-dark">
                     Neighbourhood
                   </dt>
                   <dd className="mt-1 text-sm font-semibold text-ink">{place.area}</dd>
                 </div>
-                <div className="rounded-2xl bg-primary-tint/60 p-4">
+                <div className="rounded-2xl border border-white/70 bg-white/78 p-4 shadow-sm backdrop-blur">
                   <dt className="text-[11px] font-semibold uppercase tracking-[0.12em] text-primary-dark">
                     Price
                   </dt>
@@ -159,7 +159,7 @@ export function PlaceDetailsPage() {
                       className={`rounded-3xl border p-4 ${
                         review.isMine
                           ? "border-primary/25 bg-primary-tint/40"
-                          : "border-line bg-white"
+                          : "border-white/70 bg-white/80"
                       }`}
                     >
                       <div className="flex items-start justify-between gap-3">
@@ -212,7 +212,7 @@ export function PlaceDetailsPage() {
                     onUpdated={updatePlace}
                   />
                 ) : (
-                  <div className="rounded-3xl border border-primary/15 bg-primary-tint/50 p-5">
+                  <div className="rounded-3xl border border-white/70 bg-white/80 p-5 shadow-sm backdrop-blur">
                     <p className="text-sm text-muted">
                       Log in to rate {place.name} and keep track of places you have visited.
                     </p>
@@ -275,7 +275,7 @@ export function PlaceDetailsPage() {
                 </a>
               </div>
 
-              <p className="mt-4 rounded-2xl bg-primary-tint/70 px-3 py-2 text-center text-[11px] leading-relaxed text-primary-dark">
+              <p className="mt-4 rounded-2xl border border-white/70 bg-primary-tint/65 px-3 py-2 text-center text-[11px] leading-relaxed text-primary-dark">
                 {place.myRating
                   ? `You rated this place ${place.myRating.rating}/5. You can update it any time.`
                   : "Your ratings and saves help shape the weekly trending list."}
@@ -419,7 +419,7 @@ function RatePlaceForm({
   }
 
   return (
-    <form onSubmit={handleSubmit} className="card-surface space-y-4 p-5">
+    <form onSubmit={handleSubmit} className="card-surface space-y-4 border-white/70 p-5">
       <div>
         <p className="text-sm font-semibold text-ink">Your rating</p>
         <div className="mt-2">
@@ -439,7 +439,7 @@ function RatePlaceForm({
           maxLength={500}
           disabled={pending}
           placeholder="What stood out? Was it worth the trip?"
-          className="mt-2 w-full resize-y rounded-2xl border border-line bg-white px-4 py-3 text-sm text-ink placeholder:text-muted/80 focus:border-primary/40 focus:outline-none focus:ring-2 focus:ring-primary/20"
+          className="mt-2 w-full resize-y rounded-2xl border border-primary/15 bg-white/90 px-4 py-3 text-sm text-ink placeholder:text-muted/80 shadow-sm focus:border-primary/40 focus:outline-none focus:ring-2 focus:ring-primary/20"
         />
         <p className="mt-1 text-right text-[11px] text-muted">{comment.length}/500</p>
       </div>
@@ -450,7 +450,7 @@ function RatePlaceForm({
         </p>
       ) : null}
       {success ? (
-        <p role="status" className="rounded-2xl bg-primary-tint px-3 py-2 text-sm text-primary-dark">
+        <p role="status" className="rounded-2xl bg-primary-tint/70 px-3 py-2 text-sm text-primary-dark">
           {success}
         </p>
       ) : null}

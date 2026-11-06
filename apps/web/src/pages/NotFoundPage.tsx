@@ -5,8 +5,8 @@ import { buttonClasses } from "@/components/ui/Button";
 export function NotFoundPage() {
   return (
     <main id="main-content" className="shell flex min-h-[60vh] items-center justify-center py-12">
-      <div className="max-w-lg text-center">
-        <span className="mx-auto grid h-16 w-16 place-items-center rounded-3xl bg-primary-tint text-primary-dark">
+      <div className="max-w-lg rounded-4xl border border-white/70 bg-white/80 p-8 text-center shadow-soft backdrop-blur-lg">
+        <span className="mx-auto grid h-16 w-16 place-items-center rounded-3xl bg-gradient-to-br from-primary-tint to-[#ffeaf4] text-primary-dark">
           <Compass className="h-8 w-8" aria-hidden="true" />
         </span>
         <p className="eyebrow mt-6">404 · Off the map</p>
