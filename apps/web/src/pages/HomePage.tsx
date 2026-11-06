@@ -120,7 +120,26 @@ export function HomePage() {
     <main id="main-content" className="min-h-screen pb-10">
       <section className="pt-4 sm:pt-6">
         <div className="shell">
-          <div className="relative">
+          <div className="fade-in-up mb-6 rounded-[28px] border border-white/70 bg-white/70 p-5 shadow-card backdrop-blur-md sm:p-7">
+            <p className="eyebrow">Bangalore explorer</p>
+            <h1 className="hero-title mt-2 text-3xl font-black leading-tight sm:text-4xl lg:text-5xl">
+              Discover beautiful places with live route style tracking.
+            </h1>
+            <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted sm:text-base">
+              Search by vibe, pick your destination, and follow a classy step-by-step journey experience.
+            </p>
+            <div className="mt-4">
+              <button
+                type="button"
+                onClick={() => inputRef.current?.focus()}
+                className="btn-gradient rounded-full px-5 py-2.5 text-sm font-semibold"
+              >
+                Start exploring now
+              </button>
+            </div>
+          </div>
+
+          <div className="relative fade-in-up">
             <PlacesMap
               places={nearbyPlaces}
               userLocation={location.point}
@@ -129,7 +148,7 @@ export function HomePage() {
             />
 
             <div className="pointer-events-none fixed inset-x-0 bottom-5 z-50 flex justify-center px-3">
-              <div className="pointer-events-auto w-full max-w-2xl rounded-full border border-white/80 bg-white/90 p-2 shadow-[0_18px_40px_rgba(15,23,42,0.18)] backdrop-blur-md">
+              <div className="pointer-events-auto w-full max-w-2xl rounded-full border border-white/85 bg-white/85 p-2 shadow-card backdrop-blur-xl">
                 <form onSubmit={handleSubmit} className="flex flex-col gap-2 sm:flex-row sm:items-center">
                   <div className="flex rounded-full bg-primary-tint p-1">
                     <button
@@ -163,7 +182,7 @@ export function HomePage() {
                     </button>
                   </div>
 
-                  <label className="flex flex-1 items-center gap-2 rounded-full border border-slate-200 bg-slate-50 px-3 py-2.5">
+                  <label className="flex flex-1 items-center gap-2 rounded-full border border-primary/15 bg-white px-3 py-2.5 shadow-inner">
                     <Search className="h-4 w-4 text-muted" aria-hidden="true" />
                     <input
                       ref={inputRef}
@@ -182,7 +201,7 @@ export function HomePage() {
 
                   <button
                     type="submit"
-                    className="rounded-full bg-primary px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-primary-dark disabled:opacity-70"
+                    className="btn-gradient rounded-full px-4 py-2.5 text-sm font-semibold disabled:opacity-70"
                     disabled={searching}
                   >
                     {searching ? "..." : mode === "ai" ? "Ask AI" : "Search"}
@@ -200,7 +219,7 @@ export function HomePage() {
 
       <section className="shell mt-5">
         <div className="grid gap-4 lg:grid-cols-[1.8fr_0.9fr]">
-          <div className="relative overflow-hidden rounded-[28px] border border-primary/10 bg-gradient-to-br from-white via-primary-tint/40 to-white p-3 shadow-soft sm:p-5">
+          <div className="relative overflow-hidden rounded-[28px] border border-white/70 bg-gradient-to-br from-white/85 via-primary-tint/60 to-[#ffeaf4] p-3 shadow-soft backdrop-blur-lg sm:p-5">
             <div className="absolute inset-x-0 top-0 h-16 bg-gradient-to-r from-primary/10 via-primary-tint to-transparent" />
 
             <div className="relative flex items-start justify-between gap-2 sm:gap-3">
@@ -258,7 +277,7 @@ export function HomePage() {
             </div>
           </div>
 
-          <aside className="rounded-[28px] border border-line bg-white p-3 shadow-card sm:p-4">
+          <aside className="rounded-[28px] border border-white/70 bg-white/82 p-3 shadow-card backdrop-blur-lg sm:p-4">
             <div className="flex items-center justify-between gap-2 border-b border-slate-100 pb-3">
               <div className="flex items-center gap-2">
                 <span className="grid h-8 w-8 place-items-center rounded-full bg-primary-tint text-primary-dark">
