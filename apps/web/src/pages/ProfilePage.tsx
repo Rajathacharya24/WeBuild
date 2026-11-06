@@ -95,7 +95,7 @@ export function ProfilePage() {
     <main id="main-content" className="pb-12">
       <div className="shell pt-6 sm:pt-10">
         <div className="card-surface overflow-hidden">
-          <div className="h-24 bg-gradient-to-r from-primary-dark via-primary to-emerald-400 sm:h-28" />
+          <div className="h-24 bg-gradient-to-r from-primary via-[#9f64ff] to-[#ff6fb5] sm:h-28" />
           <div className="px-5 pb-6 sm:px-7">
             <div className="-mt-10 flex flex-col gap-4 sm:-mt-12 sm:flex-row sm:items-end sm:justify-between">
               <div className="flex items-end gap-4">
@@ -179,7 +179,7 @@ export function ProfilePage() {
         ) : profile ? (
           <div className="mt-8">
             <div
-              className="no-scrollbar flex gap-2 overflow-x-auto rounded-full bg-primary-tint p-1"
+              className="no-scrollbar flex gap-2 overflow-x-auto rounded-full border border-white/80 bg-white/80 p-1.5 shadow-sm backdrop-blur"
               role="tablist"
               aria-label="Profile sections"
             >

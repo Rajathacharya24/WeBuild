@@ -82,8 +82,8 @@ export function LoginPage() {
         Back to explore
       </Link>
 
-      <div className="mx-auto mt-5 grid max-w-5xl overflow-hidden rounded-4xl border border-line bg-white shadow-soft lg:grid-cols-2">
-        <aside className="relative hidden overflow-hidden bg-primary-dark p-10 text-white lg:flex lg:flex-col">
+      <div className="mx-auto mt-5 grid max-w-5xl overflow-hidden rounded-4xl border border-white/70 bg-white/78 shadow-soft backdrop-blur-xl lg:grid-cols-2">
+        <aside className="relative hidden overflow-hidden bg-gradient-to-br from-[#7c5cff] via-[#9f64ff] to-[#ff6fb5] p-10 text-white lg:flex lg:flex-col">
           <div
             className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-primary/40 blur-2xl"
             aria-hidden="true"
@@ -94,7 +94,7 @@ export function LoginPage() {
           />
           <div className="relative">
             <div className="flex items-center gap-2.5">
-              <span className="grid h-11 w-11 place-items-center rounded-2xl bg-white text-primary-dark">
+              <span className="grid h-11 w-11 place-items-center rounded-2xl bg-white/95 text-primary-dark shadow-sm">
                 <MapPinned className="h-5 w-5" aria-hidden="true" />
               </span>
               <div>
@@ -103,7 +103,7 @@ export function LoginPage() {
               </div>
             </div>
 
-            <h2 className="mt-10 text-3xl font-bold leading-tight">
+            <h2 className="mt-10 text-3xl font-display font-bold leading-tight">
               Your Bangalore, saved in one place.
             </h2>
             <p className="mt-3 text-sm leading-relaxed text-white/75">
@@ -205,7 +205,7 @@ export function LoginPage() {
                   value={name}
                   onChange={(event) => setName(event.target.value)}
                   placeholder="Your name"
-                  className="mt-1.5 w-full rounded-2xl border border-line bg-white px-4 py-3 text-sm text-ink placeholder:text-muted/80 focus:border-primary/40 focus:outline-none focus:ring-2 focus:ring-primary/20"
+                  className="mt-1.5 w-full rounded-2xl border border-primary/15 bg-white/90 px-4 py-3 text-sm text-ink placeholder:text-muted/80 shadow-sm focus:border-primary/40 focus:outline-none focus:ring-2 focus:ring-primary/20"
                 />
               </div>
             ) : null}
@@ -223,7 +223,7 @@ export function LoginPage() {
                 value={email}
                 onChange={(event) => setEmail(event.target.value)}
                 placeholder="you@example.com"
-                className="mt-1.5 w-full rounded-2xl border border-line bg-white px-4 py-3 text-sm text-ink placeholder:text-muted/80 focus:border-primary/40 focus:outline-none focus:ring-2 focus:ring-primary/20"
+                className="mt-1.5 w-full rounded-2xl border border-primary/15 bg-white/90 px-4 py-3 text-sm text-ink placeholder:text-muted/80 shadow-sm focus:border-primary/40 focus:outline-none focus:ring-2 focus:ring-primary/20"
               />
             </div>
 
@@ -253,7 +253,7 @@ export function LoginPage() {
                 value={password}
                 onChange={(event) => setPassword(event.target.value)}
                 placeholder={isSignup ? "At least 8 characters" : "Your password"}
-                className="mt-1.5 w-full rounded-2xl border border-line bg-white px-4 py-3 text-sm text-ink placeholder:text-muted/80 focus:border-primary/40 focus:outline-none focus:ring-2 focus:ring-primary/20"
+                className="mt-1.5 w-full rounded-2xl border border-primary/15 bg-white/90 px-4 py-3 text-sm text-ink placeholder:text-muted/80 shadow-sm focus:border-primary/40 focus:outline-none focus:ring-2 focus:ring-primary/20"
               />
             </div>
 
