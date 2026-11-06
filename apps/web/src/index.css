@@ -71,7 +71,7 @@
   }
 
   .glass-panel {
-    @apply rounded-3xl border border-white/70 bg-white/78 shadow-card backdrop-blur-xl;
+    @apply rounded-3xl border border-white/70 bg-white/80 shadow-card backdrop-blur-xl;
   }
 
   .btn-gradient {
