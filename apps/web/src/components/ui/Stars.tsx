@@ -25,8 +25,8 @@ export function Stars({ value, size = "sm", showValue = false, count }: StarsPro
             className={cn(
               iconSize,
               star <= rounded
-                ? "fill-primary text-primary"
-                : "fill-transparent text-slate-300"
+                ? "fill-accent text-[#f6a900]"
+                : "fill-transparent text-[#dccfee]"
             )}
             aria-hidden="true"
           />
@@ -67,8 +67,8 @@ export function RatingInput({ value, onChange, disabled = false }: RatingInputPr
             className={cn(
               "h-8 w-8",
               star <= value
-                ? "fill-primary text-primary"
-                : "fill-transparent text-slate-300"
+                ? "fill-accent text-[#f6a900]"
+                : "fill-transparent text-[#dccfee]"
             )}
             aria-hidden="true"
           />

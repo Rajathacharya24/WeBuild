@@ -4,7 +4,7 @@ import { Button } from "./Button";
 
 export function Spinner({ label = "Loading" }: { label?: string }) {
   return (
-    <div className="flex items-center justify-center gap-2 py-10 text-sm text-muted">
+    <div className="glass-panel mx-auto flex max-w-md items-center justify-center gap-2 py-8 text-sm text-muted">
       <Loader2 className="h-5 w-5 animate-spin text-primary" aria-hidden="true" />
       <span>{label}</span>
     </div>
@@ -21,7 +21,7 @@ export function ErrorState({
   return (
     <div
       role="alert"
-      className="flex flex-col items-center gap-3 rounded-3xl border border-red-100 bg-red-50/60 px-6 py-10 text-center"
+      className="glass-panel flex flex-col items-center gap-3 border-red-200/60 bg-[#fff5f7]/90 px-6 py-10 text-center"
     >
       <AlertTriangle className="h-8 w-8 text-red-500" aria-hidden="true" />
       <p className="max-w-md text-sm text-red-700">{message}</p>
@@ -46,7 +46,7 @@ export function EmptyState({
   action?: ReactNode;
 }) {
   return (
-    <div className="flex flex-col items-center gap-3 rounded-3xl border border-dashed border-primary/20 bg-primary-tint/50 px-6 py-12 text-center">
+    <div className="glass-panel flex flex-col items-center gap-3 border-dashed border-primary/30 bg-primary-tint/45 px-6 py-12 text-center">
       <span className="text-primary" aria-hidden="true">
         {icon ?? <Inbox className="h-8 w-8" />}
       </span>
