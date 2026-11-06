@@ -8,13 +8,13 @@ import { Stars } from "@/components/ui/Stars";
 
 export function TrendingList({ places }: { places: TrendingPlace[] }) {
   return (
-    <div className="card-surface overflow-hidden">
+    <div className="card-surface overflow-hidden border-white/70">
       <ol className="divide-y divide-line">
         {places.map((place) => (
           <li key={place.id}>
             <Link
               to={`/places/${place.slug}`}
-              className="group flex items-center gap-3 p-4 transition-colors hover:bg-primary-tint/50 sm:gap-4"
+              className="group flex items-center gap-3 p-4 transition-all duration-300 hover:bg-primary-tint/50 sm:gap-4"
               title={`Trend score this week: ${place.score}`}
             >
               <span className="w-6 shrink-0 text-center text-lg font-black text-primary/40 sm:text-xl">

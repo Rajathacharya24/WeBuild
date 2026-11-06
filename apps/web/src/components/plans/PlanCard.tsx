@@ -14,8 +14,8 @@ interface PlanCardProps {
 
 export function PlanCard({ plan, pending, onToggle }: PlanCardProps) {
   return (
-    <article className="card-surface flex h-full flex-col overflow-hidden">
-      <div className="relative aspect-[16/9] overflow-hidden bg-primary-tint">
+    <article className="card-surface hover-lift flex h-full flex-col overflow-hidden border-white/70">
+      <div className="relative aspect-[16/9] overflow-hidden bg-gradient-to-br from-primary-tint to-[#ffeaf4]">
         <SafeImage src={plan.imageUrl} alt={plan.title} className="h-full w-full" />
         <div className="absolute inset-x-3 top-3 flex flex-wrap gap-2">
           <Badge variant="outline" className="bg-white/95 backdrop-blur">
@@ -30,13 +30,13 @@ export function PlanCard({ plan, pending, onToggle }: PlanCardProps) {
       </div>
 
       <div className="flex flex-1 flex-col p-5">
-        <h3 className="text-lg font-bold leading-snug text-ink">{plan.title}</h3>
+        <h3 className="text-lg font-display font-bold leading-snug text-ink">{plan.title}</h3>
         <p className="mt-1.5 text-sm leading-relaxed text-muted">{plan.description}</p>
 
         <ol className="mt-4 space-y-3">
           {plan.stops.map((stop, index) => (
             <li key={stop.id} className="flex gap-3">
-              <span className="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full bg-primary-tint text-[11px] font-bold text-primary-dark">
+              <span className="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full bg-primary-tint/80 text-[11px] font-bold text-primary-dark">
                 {index + 1}
               </span>
               <div className="min-w-0">
