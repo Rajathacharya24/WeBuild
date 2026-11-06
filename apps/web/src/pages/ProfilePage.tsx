@@ -353,7 +353,7 @@ function StatCard({
   value: number;
 }) {
   return (
-    <div className="rounded-2xl border border-primary/10 bg-primary-tint/50 p-4">
+    <div className="rounded-2xl border border-white/75 bg-white/78 p-4 shadow-sm backdrop-blur">
       <div className="flex items-center gap-1.5 text-primary-dark">
         <span aria-hidden="true">{icon}</span>
         <span className="text-[11px] font-semibold uppercase tracking-[0.12em]">{label}</span>
@@ -381,10 +381,10 @@ function TabButton({
       aria-selected={active}
       aria-controls={controls}
       onClick={onClick}
-      className={`shrink-0 rounded-full px-4 py-2.5 text-sm font-semibold transition-colors ${
+      className={`shrink-0 rounded-full px-4 py-2.5 text-sm font-semibold transition-all ${
         active
-          ? "bg-white text-primary-dark shadow-sm"
-          : "text-primary-dark/70 hover:text-primary-dark"
+          ? "bg-gradient-to-r from-primary to-[#ff6fb5] text-white shadow-sm"
+          : "text-primary-dark/70 hover:bg-primary-tint/70 hover:text-primary-dark"
       }`}
     >
       {children}
