@@ -277,7 +277,7 @@ export function HomePage() {
             </div>
           </div>
 
-          <aside className="rounded-[28px] border border-white/70 bg-white/82 p-3 shadow-card backdrop-blur-lg sm:p-4">
+          <aside className="rounded-[28px] border border-white/70 bg-white/80 p-3 shadow-card backdrop-blur-lg sm:p-4">
             <div className="flex items-center justify-between gap-2 border-b border-slate-100 pb-3">
               <div className="flex items-center gap-2">
                 <span className="grid h-8 w-8 place-items-center rounded-full bg-primary-tint text-primary-dark">

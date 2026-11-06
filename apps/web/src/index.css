@@ -59,7 +59,7 @@
   }
 
   .card-surface {
-    @apply rounded-3xl border border-white/65 bg-white/80 shadow-card backdrop-blur-md;
+      @apply rounded-3xl border border-white/65 bg-white/80 shadow-card backdrop-blur-md;
   }
 
   .skeleton {
