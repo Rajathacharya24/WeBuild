@@ -7,7 +7,7 @@ export function SavedPlaceCard({ place }: { place: PlaceRef }) {
   return (
     <Link
       to={`/places/${place.slug}`}
-      className="group card-surface flex items-center gap-3 overflow-hidden p-3 transition-colors hover:border-primary/30"
+      className="group card-surface hover-lift flex items-center gap-3 overflow-hidden border-white/70 p-3"
     >
       <SafeImage
         src={place.imageUrl}
@@ -18,7 +18,7 @@ export function SavedPlaceCard({ place }: { place: PlaceRef }) {
         <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-primary-dark">
           {place.category}
         </p>
-        <h3 className="truncate text-sm font-bold text-ink group-hover:text-primary-dark">
+        <h3 className="truncate text-sm font-display font-bold text-ink group-hover:text-primary-dark">
           {place.name}
         </h3>
         <p className="truncate text-xs text-muted">{place.area}</p>

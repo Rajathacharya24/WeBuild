@@ -2,7 +2,7 @@ import { cn } from "@/lib/format";
 
 export function PlaceCardSkeleton({ className }: { className?: string }) {
   return (
-    <div className={cn("card-surface overflow-hidden", className)}>
+    <div className={cn("card-surface overflow-hidden border-white/70", className)}>
       <div className="skeleton aspect-[4/3] rounded-none" />
       <div className="space-y-3 p-4">
         <div className="skeleton h-5 w-3/4" />
@@ -15,7 +15,7 @@ export function PlaceCardSkeleton({ className }: { className?: string }) {
 
 export function PlanCardSkeleton() {
   return (
-    <div className="card-surface overflow-hidden">
+    <div className="card-surface overflow-hidden border-white/70">
       <div className="skeleton aspect-[16/9] rounded-none" />
       <div className="space-y-3 p-5">
         <div className="skeleton h-5 w-2/3" />
@@ -28,7 +28,7 @@ export function PlanCardSkeleton() {
 
 export function TrendingSkeleton() {
   return (
-    <div className="card-surface divide-y divide-line">
+    <div className="card-surface divide-y divide-line border-white/70">
       {Array.from({ length: 5 }).map((_, index) => (
         <div key={index} className="flex items-center gap-4 p-4">
           <div className="skeleton h-12 w-12 rounded-2xl" />
