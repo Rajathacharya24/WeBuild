@@ -68,53 +68,6 @@ export function HomePage() {
 
   const nearbyPlaces = nearby.data ?? [];
 
-  const filteredPlaces = useMemo(() => [...nearbyPlaces].slice(0, 4), [nearbyPlaces]);
-
-  useEffect(() => {
-    if (!filteredPlaces.length) {
-      setSelectedPlaceId(null);
-      return;
-    }
-
-    if (!selectedPlaceId || !filteredPlaces.some((place) => place.id === selectedPlaceId)) {
-      setSelectedPlaceId(filteredPlaces[0].id);
-    }
-  }, [filteredPlaces, selectedPlaceId]);
-
-  const selectedPlace =
-    filteredPlaces.find((place) => place.id === selectedPlaceId) ?? filteredPlaces[0] ?? null;
-
-  const routeSteps = useMemo(() => {
-    if (!selectedPlace) {
-      return [];
-    }
-
-    const area = selectedPlace.area;
-
-    return [
-      {
-        title: "From your location",
-        subtitle: "You are here",
-        detail: "Start from your current spot and head toward the nearest stop."
-      },
-      {
-        title: "Metro / rapid transit",
-        subtitle: "Best route",
-        detail: `Take the fastest route toward ${area} to avoid traffic and save time.`
-      },
-      {
-        title: "Short walk",
-        subtitle: "2 min walk",
-        detail: `Continue on foot to ${selectedPlace.name} and get closer to your destination.`
-      },
-      {
-        title: "Arrive at destination",
-        subtitle: "You are there",
-        detail: `Enjoy your visit to ${selectedPlace.name}.`
-      }
-    ];
-  }, [selectedPlace]);
-
   return (
     <main id="main-content" className="min-h-screen pb-10">
       <section className="pt-4 sm:pt-6">
