@@ -45,7 +45,7 @@ export function PlaceDetailsPage() {
           onRetry={() => void placeQuery.reload()}
         />
         <div className="mt-4 text-center">
-          <Link to="/#nearby" className="text-sm font-semibold text-primary-dark hover:underline">
+          <Link to="/" className="text-sm font-semibold text-primary-dark hover:underline">
             Back to nearby places
           </Link>
         </div>
@@ -65,7 +65,7 @@ export function PlaceDetailsPage() {
     <main id="main-content" className="pb-12">
       <div className="shell pt-5 sm:pt-8">
         <Link
-          to="/#nearby"
+          to="/"
           className="inline-flex items-center gap-1.5 text-sm font-semibold text-muted transition-colors hover:text-primary-dark"
         >
           <ArrowLeft className="h-4 w-4" aria-hidden="true" />

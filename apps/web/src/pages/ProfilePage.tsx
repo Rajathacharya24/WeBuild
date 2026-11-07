@@ -124,7 +124,7 @@ export function ProfilePage() {
                   <UserRound className="h-3 w-3" aria-hidden="true" />
                   Member since {formatDate(user.createdAt)}
                 </Badge>
-                <Link to="/#nearby" className={buttonClasses("outline", "sm")}>
+                <Link to="/" className={buttonClasses("outline", "sm")}>
                   Explore places
                 </Link>
               </div>
@@ -263,7 +263,7 @@ export function ProfilePage() {
                       message="Visit a place page and leave a rating to start building your Bangalore map."
                       icon={<Star className="h-8 w-8" />}
                       action={
-                        <Link to="/#nearby" className={buttonClasses("primary", "md")}>
+                        <Link to="/" className={buttonClasses("primary", "md")}>
                           Find a place
                         </Link>
                       }
@@ -326,7 +326,7 @@ export function ProfilePage() {
                         message="Tap “Save place” on any place page to keep it handy."
                         icon={<MapPin className="h-8 w-8" />}
                         action={
-                          <Link to="/#nearby" className={buttonClasses("primary", "md")}>
+                          <Link to="/" className={buttonClasses("primary", "md")}>
                             Explore nearby
                           </Link>
                         }

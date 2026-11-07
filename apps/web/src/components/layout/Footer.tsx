@@ -34,8 +34,8 @@ export function Footer() {
           <h3 className="text-sm font-semibold text-ink">Explore</h3>
           <ul className="mt-3 space-y-2 text-sm text-muted">
             <li>
-              <Link to="/#nearby" className="hover:text-primary-dark">
-                Nearby places
+              <Link to="/" className="hover:text-primary-dark">
+                Explore map
               </Link>
             </li>
           </ul>
