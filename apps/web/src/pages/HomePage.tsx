@@ -120,25 +120,6 @@ export function HomePage() {
     <main id="main-content" className="min-h-screen pb-10">
       <section className="pt-4 sm:pt-6">
         <div className="shell">
-          <div className="fade-in-up mb-6 rounded-[28px] border border-white/70 bg-white/70 p-5 shadow-card backdrop-blur-md sm:p-7">
-            <p className="eyebrow">Bangalore explorer</p>
-            <h1 className="hero-title mt-2 text-3xl font-black leading-tight sm:text-4xl lg:text-5xl">
-              Discover beautiful places with live route style tracking.
-            </h1>
-            <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted sm:text-base">
-              Search by vibe, pick your destination, and follow a classy step-by-step journey experience.
-            </p>
-            <div className="mt-4">
-              <button
-                type="button"
-                onClick={() => inputRef.current?.focus()}
-                className="btn-gradient rounded-full px-5 py-2.5 text-sm font-semibold"
-              >
-                Start exploring now
-              </button>
-            </div>
-          </div>
-
           <div className="relative fade-in-up">
             <PlacesMap
               places={nearbyPlaces}
