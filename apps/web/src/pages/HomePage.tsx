@@ -1,5 +1,5 @@
-import { useEffect, useMemo, useRef, useState, type FormEvent } from "react";
-import { ArrowRight, Filter, MapPin, Search, Sparkles, Star } from "lucide-react";
+import { useRef, useState, type FormEvent } from "react";
+import { Search, Sparkles } from "lucide-react";
 import type { SearchMode } from "@webuild/shared";
 import { useAsync } from "@/hooks/useAsync";
 import { useGeolocation } from "@/hooks/useGeolocation";
@@ -14,7 +14,6 @@ export function HomePage() {
   const [term, setTerm] = useState("");
   const [searching, setSearching] = useState(false);
   const [searchError, setSearchError] = useState<string | null>(null);
-  const [selectedPlaceId, setSelectedPlaceId] = useState<string | null>(null);
 
   const nearby = useAsync(
     () =>
