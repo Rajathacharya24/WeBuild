@@ -219,7 +219,7 @@ export function HomePage() {
 
       <section className="shell mt-5">
         <div className="grid gap-4 lg:grid-cols-[1.8fr_0.9fr]">
-          <div className="relative overflow-hidden rounded-[28px] border border-white/70 bg-gradient-to-br from-white/85 via-primary-tint/60 to-[#ffeaf4] p-3 shadow-soft backdrop-blur-lg sm:p-5">
+          <div className="relative overflow-hidden rounded-[28px] border border-white/70 bg-gradient-to-br from-white/85 via-primary-tint/60 to-[#ddf2e6] p-3 shadow-soft backdrop-blur-lg sm:p-5">
             <div className="absolute inset-x-0 top-0 h-16 bg-gradient-to-r from-primary/10 via-primary-tint to-transparent" />
 
             <div className="relative flex items-start justify-between gap-2 sm:gap-3">

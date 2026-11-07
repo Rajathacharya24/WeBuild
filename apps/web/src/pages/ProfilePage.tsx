@@ -95,7 +95,7 @@ export function ProfilePage() {
     <main id="main-content" className="pb-12">
       <div className="shell pt-6 sm:pt-10">
         <div className="card-surface overflow-hidden">
-          <div className="h-24 bg-gradient-to-r from-primary via-[#9f64ff] to-[#ff6fb5] sm:h-28" />
+          <div className="h-24 bg-gradient-to-r from-primary via-[#2f9e63] to-[#57c78a] sm:h-28" />
           <div className="px-5 pb-6 sm:px-7">
             <div className="-mt-10 flex flex-col gap-4 sm:-mt-12 sm:flex-row sm:items-end sm:justify-between">
               <div className="flex items-end gap-4">
@@ -383,7 +383,7 @@ function TabButton({
       onClick={onClick}
       className={`shrink-0 rounded-full px-4 py-2.5 text-sm font-semibold transition-all ${
         active
-          ? "bg-gradient-to-r from-primary to-[#ff6fb5] text-white shadow-sm"
+          ? "bg-gradient-to-r from-primary to-[#57c78a] text-white shadow-sm"
           : "text-primary-dark/70 hover:bg-primary-tint/70 hover:text-primary-dark"
       }`}
     >

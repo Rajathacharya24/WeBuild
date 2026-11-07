@@ -26,7 +26,7 @@ export function Stars({ value, size = "sm", showValue = false, count }: StarsPro
               iconSize,
               star <= rounded
                 ? "fill-accent text-[#f6a900]"
-                : "fill-transparent text-[#dccfee]"
+                : "fill-transparent text-[#d8e2dc]"
             )}
             aria-hidden="true"
           />
@@ -68,7 +68,7 @@ export function RatingInput({ value, onChange, disabled = false }: RatingInputPr
               "h-8 w-8",
               star <= value
                 ? "fill-accent text-[#f6a900]"
-                : "fill-transparent text-[#dccfee]"
+                : "fill-transparent text-[#d8e2dc]"
             )}
             aria-hidden="true"
           />

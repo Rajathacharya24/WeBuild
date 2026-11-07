@@ -59,7 +59,7 @@ export function Navbar() {
       </a>
       <div className="shell flex h-16 items-center justify-between gap-4">
         <Link to="/" className="flex items-center gap-2.5" aria-label={`${appConfig.name} home`}>
-          <span className="grid h-10 w-10 place-items-center rounded-2xl bg-gradient-to-br from-primary to-[#ff6fb5] text-white shadow-glow">
+          <span className="grid h-10 w-10 place-items-center rounded-2xl bg-gradient-to-br from-primary to-[#57c78a] text-white shadow-glow">
             <MapPinned className="h-5 w-5" aria-hidden="true" />
           </span>
           <span className="leading-tight">
@@ -86,7 +86,7 @@ export function Navbar() {
                 [
                   "rounded-full px-3.5 py-1.5 text-xs font-semibold transition-all duration-200",
                   isActive
-                    ? "bg-gradient-to-r from-primary to-[#ff6fb5] text-white shadow-sm"
+                    ? "bg-gradient-to-r from-primary to-[#57c78a] text-white shadow-sm"
                     : "text-muted hover:bg-primary-tint/60 hover:text-primary-dark"
                 ].join(" ")
               }

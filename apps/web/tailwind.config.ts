@@ -31,9 +31,9 @@ export default {
         ]
       },
       boxShadow: {
-        soft: "0 20px 45px -24px rgba(124, 92, 255, 0.34)",
-        card: "0 14px 34px -20px rgba(59, 58, 90, 0.26)",
-        glow: "0 16px 36px -16px rgba(255, 111, 181, 0.45)"
+        soft: "0 20px 45px -24px rgba(20, 83, 45, 0.34)",
+        card: "0 14px 34px -20px rgba(24, 43, 33, 0.26)",
+        glow: "0 16px 36px -16px rgba(47, 158, 99, 0.45)"
       },
       borderRadius: {
         "4xl": "2rem"

@@ -83,7 +83,7 @@ export function LoginPage() {
       </Link>
 
       <div className="mx-auto mt-5 grid max-w-5xl overflow-hidden rounded-4xl border border-white/70 bg-white/80 shadow-soft backdrop-blur-xl lg:grid-cols-2">
-        <aside className="relative hidden overflow-hidden bg-gradient-to-br from-[#7c5cff] via-[#9f64ff] to-[#ff6fb5] p-10 text-white lg:flex lg:flex-col">
+        <aside className="relative hidden overflow-hidden bg-gradient-to-br from-[#14532d] via-[#2f9e63] to-[#57c78a] p-10 text-white lg:flex lg:flex-col">
           <div
             className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-primary/40 blur-2xl"
             aria-hidden="true"

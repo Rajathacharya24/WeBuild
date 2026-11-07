@@ -8,7 +8,7 @@ export function Footer() {
       <div className="shell grid gap-8 py-10 sm:grid-cols-2 lg:grid-cols-4">
         <div className="sm:col-span-2">
           <Link to="/" className="inline-flex items-center gap-2.5">
-            <span className="grid h-9 w-9 place-items-center rounded-2xl bg-gradient-to-br from-primary to-[#ff6fb5] text-white shadow-glow">
+            <span className="grid h-9 w-9 place-items-center rounded-2xl bg-gradient-to-br from-primary to-[#57c78a] text-white shadow-glow">
               <MapPinned className="h-4 w-4" aria-hidden="true" />
             </span>
             <span className="text-lg font-display font-bold tracking-tight text-ink">{appConfig.name}</span>

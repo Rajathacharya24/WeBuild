@@ -33,8 +33,8 @@ function AppShell() {
   return (
     <div className="relative flex min-h-screen flex-col overflow-x-clip">
       <div className="pointer-events-none absolute inset-0 -z-10">
-        <div className="absolute -left-24 top-8 h-72 w-72 rounded-full bg-[#ffe5d9]/70 blur-3xl" />
-        <div className="absolute right-0 top-24 h-80 w-80 rounded-full bg-[#e8e0ff]/70 blur-3xl" />
+        <div className="absolute -left-24 top-8 h-72 w-72 rounded-full bg-[#d6eee0]/70 blur-3xl" />
+        <div className="absolute right-0 top-24 h-80 w-80 rounded-full bg-[#d0ecd9]/70 blur-3xl" />
         <div className="absolute bottom-20 left-1/3 h-72 w-72 rounded-full bg-[#dff5ec]/70 blur-3xl" />
       </div>
       <Navbar />

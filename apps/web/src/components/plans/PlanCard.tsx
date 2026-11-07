@@ -15,7 +15,7 @@ interface PlanCardProps {
 export function PlanCard({ plan, pending, onToggle }: PlanCardProps) {
   return (
     <article className="card-surface hover-lift flex h-full flex-col overflow-hidden border-white/70">
-      <div className="relative aspect-[16/9] overflow-hidden bg-gradient-to-br from-primary-tint to-[#ffeaf4]">
+      <div className="relative aspect-[16/9] overflow-hidden bg-gradient-to-br from-primary-tint to-[#ddf2e6]">
         <SafeImage src={plan.imageUrl} alt={plan.title} className="h-full w-full" />
         <div className="absolute inset-x-3 top-3 flex flex-wrap gap-2">
           <Badge variant="outline" className="bg-white/95 backdrop-blur">

@@ -10,7 +10,7 @@ export function PlaceCard({ place }: { place: PlaceSummary }) {
   return (
     <article className="group card-surface hover-lift h-full overflow-hidden border-white/70">
       <Link to={`/places/${place.slug}`} className="flex h-full flex-col">
-        <div className="relative aspect-[4/3] overflow-hidden bg-gradient-to-br from-primary-tint to-[#ffeaf4]">
+        <div className="relative aspect-[4/3] overflow-hidden bg-gradient-to-br from-primary-tint to-[#ddf2e6]">
           <SafeImage
             src={place.imageUrl}
             alt={place.name}
@@ -22,7 +22,7 @@ export function PlaceCard({ place }: { place: PlaceSummary }) {
             </Badge>
             {place.savedByMe ? (
               <span
-                className="grid h-7 w-7 place-items-center rounded-full bg-gradient-to-r from-primary to-[#ff6fb5] text-white shadow-sm"
+                className="grid h-7 w-7 place-items-center rounded-full bg-gradient-to-r from-primary to-[#57c78a] text-white shadow-sm"
                 title="Saved place"
               >
                 <Bookmark className="h-3.5 w-3.5 fill-current" aria-hidden="true" />
