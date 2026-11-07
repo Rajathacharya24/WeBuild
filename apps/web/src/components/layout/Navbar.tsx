@@ -73,12 +73,7 @@ export function Navbar() {
         </Link>
 
         <nav className="hidden items-center gap-2 rounded-full border border-white/75 bg-white/75 p-1.5 shadow-card backdrop-blur md:flex">
-          {[
-            { to: "/", label: "Explore" },
-            { to: "/#nearby", label: "Nearby" },
-            { to: "/#weekend-plans", label: "Plans" },
-            { to: "/#trending", label: "Trending" }
-          ].map((item) => (
+          {[{ to: "/", label: "Explore" }].map((item) => (
             <NavLink
               key={item.to}
               to={item.to}

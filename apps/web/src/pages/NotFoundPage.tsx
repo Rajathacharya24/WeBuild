@@ -17,13 +17,10 @@ export function NotFoundPage() {
           The link may be old, or the place may have moved. Head back to the map and
           start exploring again.
         </p>
-        <div className="mt-6 flex flex-col justify-center gap-3 sm:flex-row">
+        <div className="mt-6">
           <Link to="/" className={buttonClasses("primary", "md")}>
             <MapPin className="h-4 w-4" aria-hidden="true" />
             Back to the map
-          </Link>
-          <Link to="/#trending" className={buttonClasses("outline", "md")}>
-            See what is trending
           </Link>
         </div>
       </div>

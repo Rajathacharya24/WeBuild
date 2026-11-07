@@ -38,16 +38,6 @@ export function Footer() {
                 Nearby places
               </Link>
             </li>
-            <li>
-              <Link to="/#weekend-plans" className="hover:text-primary-dark">
-                Weekend plans
-              </Link>
-            </li>
-            <li>
-              <Link to="/#trending" className="hover:text-primary-dark">
-                Trending this week
-              </Link>
-            </li>
           </ul>
         </div>
 
