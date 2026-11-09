@@ -171,7 +171,4 @@ Unsplash place photos and OpenStreetMap tiles.
 - SPA routing needs a fallback to `index.html` (Vite preview and most static
   hosts handle this; configure rewrites otherwise).
 
-## Credits
 
-Map data © OpenStreetMap contributors. Place photography via Unsplash. Weekend
-plan and place copy is original seed content for demo purposes.
